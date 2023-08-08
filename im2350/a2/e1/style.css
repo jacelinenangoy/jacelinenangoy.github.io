@@ -1,0 +1,130 @@
+/* This one CSS file is being imported into each of the examples so I've used comments to split up the sections */
+
+/* This contains global styles that will be useful for all pages */
+
+*{
+ box-sizing: border-box;
+ margin: 0; 
+}
+
+:root{
+  --comp-col-01:rgb(40,40,40);
+  --comp-col-02:rgb(80,80,80);
+  --comp-col-03:rgb(120,120,120);
+  --comp-col-04:rgb(160,160,160);
+  --comp-col-05:rgb(200,200,200);
+  --comp-col-06:rgb(240,240,240);
+  --border: 3px solid rgb(61, 58, 53);
+}
+
+
+.FlexWrapper{
+  background-color: rgb(192, 193, 196);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch ;
+}
+
+#row-one{
+  flex-grow: 3;
+  display: flex;
+  justify-content: space-around;
+  gap:8px;
+}
+#row-two{
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-around;
+  gap:5px;
+}
+#row-three{
+  flex-grow: 3;
+  display: flex;
+  justify-content: space-around;
+  gap:8px;
+}
+
+
+.BoxStyle1{
+  background-image: linear-gradient(130deg,rgb(174, 174, 201),rgb(72, 80, 102));
+  border: var(--border);
+  height: 80%;
+  display: flex;
+  gap: 10%;
+}
+.BoxStyle2{
+  background-image: linear-gradient(170deg,rgb(174, 174, 201),rgb(72, 80, 102),rgb(174, 174, 201));
+  border: var(--border);
+  height: 60%;
+  align-self: center;
+}
+.BoxStyle3{
+  background-image: linear-gradient(rgb(116, 141, 192),rgb(221, 165, 140),rgb(95, 86, 86));
+  border: var(--border);
+  height: 80%;
+  align-self: flex-end;
+}
+
+
+.BoxStyle4{
+  background-image: linear-gradient(rgb(226, 155, 130),rgb(253, 244, 147),rgb(237, 232, 232));
+  border: var(--border);
+}
+.BoxStyle5{
+  background-image: linear-gradient(rgb(111, 125, 154),rgb(234, 227, 227));
+  border: var(--border);
+}
+.BoxStyle6{
+  background-image: linear-gradient(130deg,rgb(196, 200, 211),rgb(174, 174, 201));
+  border: var(--border);
+  height: 80%;
+  align-self: flex-end;
+  position: relative;
+}
+.Luna1{
+  background-image: linear-gradient(rgb(72, 80, 102),rgb(41, 41, 49));
+  height: 15%;
+  align-self: flex-end;
+  position: absolute;
+  bottom: 110px;
+  right: 50px;
+  width: 120px;
+  border-radius: 80px;
+}
+.Luna2{
+  background-image: linear-gradient(130deg,rgb(72, 80, 102),rgb(174, 174, 201));
+  align-self: flex-end;
+  position: absolute;
+  bottom: 160px;
+  right: 125px;
+  width: 0; 
+  height: 0; 
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent; 
+  border-left:40px solid rgb(72, 80, 102) ; 
+}
+.Luna3{
+  background-image: linear-gradient(130deg,rgb(72, 80, 102),rgb(174, 174, 201));
+  align-self: flex-end;
+  position: absolute;
+  bottom: 160px;
+  right: 55px;
+  width: 0; 
+  height: 0; 
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent; 
+  border-right:40px solid rgb(72, 80, 102) ; 
+}
+
+.Luna4{
+  background-image: linear-gradient(rgb(72, 80, 102),rgb(41, 41, 49));
+  height: 23%;
+  align-self: flex-end;
+  position: absolute;
+  bottom: 25px;
+  right: 60px;
+  width: 150px;
+  border-radius: 60px;
+}
