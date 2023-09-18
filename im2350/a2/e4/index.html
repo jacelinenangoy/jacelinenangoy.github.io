@@ -1,23 +1,189 @@
 <!DOCTYPE html>
 
+<!-- hello! my concept for this website is a jazz music discover website, similar to how spotify does discover weekly, 
+  which ultimately plays an artist's song on loop on the media player.-->
+
+<!-- added attribute: I added an auto loop function as I found it would be nice to have the song on repeat in the background as you browse the website, rather than having to manually click play over and over again-->
+
+<!-- these are my references for the audio, icons and images -->
+
+<!-- profile icons: https://www.freepik.com/free-vector/hand-drawn-flat-profile-icon-collection_17657469.htm-->
+<!-- audio: https://www.jamendo.com/track/1885446/indigo-moon-->
+<!-- artist image: https://arsmysteria.jimdofree.com/christian-petermann/-->
+<!-- hero image: photo taken by me-->
+
+
 <html lang="en">
-<!-- the head tag only shows up in top -->
-    <head>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jace's Jazzy Radio</title>
+    <!--the favicon was changed into a headphones emoji as I wanted it to be easily recognisable as a music listening website-->
+    <link rel="icon" type="image" href="https://em-content.zobj.net/source/google/350/headphone_1f3a7.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="playerControls.js" defer></script>
+  </head>
 
-        <title> jace's boilerplate</title>
 
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
-       
-    </head>
+  <header>
+    <h1>♪ &nbsp;jazzy radio &nbsp;     (･◡･๑) ♫</h1>
+  </header>
 
-    <body>
 
-        <h1>This is my boilerplate</h1>
 
-    </body>
+  <body>
+
+
+    <!--this left column holds the introduction of the website and the featured musician of the day-->
+    <!--featured musician of the day section also includes artist photo and a hyperlink to the artist's page-->
+    <!--placeholder-->
+
+    <div class="column left" style="background-color:rgb(61, 41, 21);">
+      <h2>Welcome to Jazzy Radio!</h2>
+      <br>
+     
+      <h3>Jazzy radio is a music discovery website which allows the user to play a new song by a particular artist! 
+        The song of the day refreshes every midnight AEST. </h3>
+
+      <br>
+  
+      <h3>The audio is default set on <em>auto loop</em> for smooth continual breezy listening - Just put on your headphones and groove!</h3>
+
+      <br>
+      <br>
+
+
+      <li><h2>Today's artist of the day is... <a href="https://www.jamendo.com/artist/493111/christian-petermann">Christian Petermann!!</h2></a></li>
+
+      <br>
+      <img id="featuredArtist" src="/photos/christian.png" alt="featured artist image">
+      <br>
+      <h4>Christian Petermann, born in 1957, is a German composer, guitarist and well known music producer most notable for his instrumentals and background music.
+        He has over 15 million song streams, 700 000+ downloads and continues to make music to this day!
+      </h4>
+
+      <br>
+      <br><br>
+       <!--as the music is under a license, these copyright licence icons and acknowledgements were also included-->
+
+       <h5>This audio is under Creative Commons License &nbsp; &nbsp; 
+        <br>
+        <br>
+        <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img>
+        <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img>
+        <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img>
+        <img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img>
+      </h5>
+
+    </div>
+
+
+    <!--this middle column holds the audio player-->
+    <!--the audio player is adjusted from the one from class-->
+    <!--the addition of the loop function allows users to seamlessly and continuously listen to the music without manually stopping and starting again-->
+    <!--I chose this function as it would be a helpful for a user to listen to the featured song without extra buttons to start it again -->
+
+    <div class="column middle" style="background-color:rgb(46, 25, 11);">
+    <li><a href="https://www.jamendo.com/track/1885446/indigo-moon"><h2>Indigo Moon</h2></a></li>
+    <h3>by Christian Petermann</h3>
+    <br>
+    <div class="audio-player-wrapper">
+      <!-- this element holds the audio element and the overlay -->
+      <div class="audio-element-wrapper">
+        
+        <!-- I changed the image into a photo that I took at a bar  -->
+        <img id="heroImage" src="/photos/bar.png" alt="">
+
+        <!-- In regards to the music audio itself, I used a copyright free (Creative Commons Licence) track from the Jamendo website-->
+        <!-- I tried to find an artist -->
+
+        <audio id="audioElement" controls>
+          <source src="Indigo_moon_Christian_Petermann.mp3" type="audio/mp3"> 
+        </audio>
+
+        <img id="audioPlayOverlay" src="./icons/play.svg">
+
+      </div>
+      <!-- this element holds the control buttons and icons-->
+      <div class="audio-controls-wrapper" id="controlsWrapper">
+
+        <button class="audio-control-button" id="playButton"></button>
+        <button class="audio-control-button" id="muteButton"></button>
+
+        <progress class="audio-progress-bar" id="progressBar" value="0">/progress>
+
+
+        <!-- I changed the loop button alignment to the right side as I wanted to separate it from the play and mute button for a cleaner look and ease of use-->
+        <button class="audio-control-button" id="loopButton"></button> 
+
+      
+
+      </div>
+      <br>
+
+     
+
+      <br>
+
+   <!--a brief description of the song is also written underneath the media player-->
+  <!-- to put links and text on the same line, I had to incorporate the use of a list, as shown below-->
+
+    <li><h3> This is a special smooth jazz song by Petermann from his 2021 album, <a href="https://www.jamendo.com/album/454882/golden-star">Golden Star.</a> 
+      Having 21 songs in this album, this song has become a hidden gem for jazz enthusiasts. Golden Star was inspired by the weather, special events and small instances in life.
+      <br>
+      <br>
+      Today's song <em>Indigo Moon</em> was chosen by our curator as it perfectly depicts the mysterious winter nights recently. 
+      Us at <em>Jazzy Radio</em> hope you can enjoy this groove no matter where you are!
+    </li>
+    </h3>
+   
+  </div>
+    </div>
+
+
+  <!--this right column holds the other artist profiles-->
+  <!--each musician has their own profile photo, name, music style, and short caption-->
+  <!--this section was inspired by acitivity E2 where we had to design the menu - I found that little sections allow clear readability-->
+
+  <div class="column right" style="background-color:rgb(88, 68, 68);">
+    <br>
+    <h2>Some other artists you might like!</h2>
+    <br>
+    <br>
+
+    <img id="artist1" src="/photos/p1.png" alt="artist 1 image">
+    <h3>Artist Name</h3>
+    <br>
+    <h4>artist description. artist plays this instrument and is most known for performing in place.</h4>
+    <br>
+    <br>
+    <br>
+    
+    <img id="artist2" src="/photos/p2.png" alt="artist 2 image">
+    <h3>Artist Name</h3>
+    <br>
+    <h4>artist description. artist plays this instrument and is most known for performing in place.</h4>
+
+    <br>
+    <br>
+    <br>
+    <img id="artist3" src="/photos/p3.png" alt="artist 3 image">
+    <h3>Artist Name</h3>
+    <br>
+    <h4>artist description. artist plays this instrument and is most known for performing in place.</h4>
+
+    <br>
+    <br>
+    <br>
+    
+    <img id="artist4" src="/photos/p4.png" alt="artist 4 image">
+    <h3>Artist Name</h3>
+    <br>
+    <h4>artist description. artist plays this instrument and is most known for performing in place.</h4>
+
+  </div>
+
+
+  </body>
 
 </html>
