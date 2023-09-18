@@ -233,7 +233,7 @@ This was inspired by Assignment A2, E1 in which I learnt how to create rows for 
 .column{
   float: left;
   padding: 15px;
-  height: 550px;
+  height: 650px;
 }
 
 /* The left and right column are only 25% width as they only act as support for the media player*/
