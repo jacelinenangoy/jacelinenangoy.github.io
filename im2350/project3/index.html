@@ -1,0 +1,322 @@
+<!-- intro: interactive landing page of portfolio-->
+<!-- this is a prototype for my portfolio which highlights navigation with the use of click and drag for a more fun and engaging visual interactivity-->
+
+<!-- in my initial concept idea and presentation, I created a simpler version of this interactive (with draggable project images, with hover functions and popup when clicked on)-->
+<!-- but after experimenting with my visual style and set of media, I decided to pursue a film roll look rather than an assortment of images like a collage -->
+<!-- please see my archive section for the draft of this project (constructed like my presentation idea) before I changed it into the film roll look-->
+
+<!-- film roll is representative of how each project is connected (same roll, all created by me), and yet each "photo" depicts a different moment (different projects)-->
+
+<!-- note: all photos and images are owned by me, hence no need for copyright licences or credits ^-^ -->
+<!-- I would love to continue this by incorporating more projects and developing a scrollable element in the future -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+    
+  <head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jace nangoy!</title>
+    <!--the favicon was changed into an emoji as I wanted it to be distinguished as my portfolio compared to other browsing tabs-->
+    <link rel="icon" type="image" href="https://static.vecteezy.com/system/resources/thumbnails/008/475/704/small/heart-icon-isolated-on-white-background-png.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    
+    <!-- This container contains the blur id, so that when combined with the js script, the entire background page can be blurred out! -->
+    <div class="container" id="blur">
+      
+      <!-- A video was added to the background to make the website more visually appealing (my own video)-->
+      <video autoplay loop muted plays-inline class="vid">
+        <source src="images/bg.mp4" type="video/mp4">
+      </video>
+
+      <!-- For the nav bar, I included my name (which acts as a home screen link)-->
+      <!-- About - links to about myself-->
+      <!-- Works - links to a dropdown list of all my works -->
+      <!-- Archives - links to behind the scenes sketches and messy drafts -->
+      <!-- Contact - links to my contact information-->
+
+     <!-- I also wanted this to mimic sticky notes and website popups, hence making it draggable too -->
+
+      <nav>
+        <button type="#" onClick="refreshPage()"><h2>(｡˃ ᵕ ˂ )⸝♡‧₊˚  slowesce ‧₊˚</h2></button>
+        <ul>
+          <li><a href="#"onclick="navAbout()">about</a></li>
+          <li><a href="#"onclick="navProjects()">projects</a></li>
+          <li><a href="#"onclick="navArchive()">archive</a></li>
+          <li><a href="#"onclick="navContact()">contact</a></li>
+        </ul>
+      </nav>
+
+      <!--about -->
+      <div class="abt Draggable" id="abt">
+        <h4>hi, I'm jace! </h4>
+        <br>
+        <img src="images/profile.png">
+        <br>
+        <h5><br>your creative designer based in naarm. <br>welcome to my portfolio! </h5>
+        <br>
+        <h6> (drag to move me aside, or click the 'about' tab to close)</h6>
+      </div>
+
+        <!--projects -->
+        <div class="projects Draggable" id="projects">
+          <h4> ଘ(੭*ˊᵕˋ)੭* ̀ˋall projects!</h4>
+          <br>
+          <h5>
+            <ul>
+              <li>soft touch, slow burn</li>
+              <li>faint memoria</li>
+              <li>imprint</li>
+              <li>morning coffee</li>
+              <li>detached</li>
+              <li>snapshot</li>
+              <li>still life</li>
+              <li>oniftml</li>
+              <li>where's cookie?</li>
+          </ul></h5>
+        </div>
+
+      <!--archive -->
+      <div class="archive Draggable" id="archive">
+        <h4>website archive ( ⑉´ᯅ`⑉ )…. </h4>
+        <br>
+        <img src="images/archive.png">
+        <br>
+        <h5><br> initial version of this website before being changed into the film roll look! </h5>
+      </div>
+
+
+      <!--contact -->
+      <div class="contact Draggable" id="contact">
+        <h4>let's get in touch! <br> 📞 ٩(ˊᗜˋ*)و</h4>
+        <br>
+        <h5><br>phone: 1234567890 
+          <br> email: jaceline@jaceline.com
+          </h5>
+        <br>
+      </div>
+
+     
+      <h5>feel free to rearrange photos as you explore! &nbsp;</h5>
+
+    <!-- I used a similar template to the draggable example shown during class, and used a flexbox to contain all divs-->
+
+    <div style="display: flex;">
+
+      <!-- rather than using a div, I decided to use a button to create clickable element-->
+      <!-- I added the Draggable class applied to all the elements as I want to be draggable -->
+
+      <!-- each of these project buttons have an image (initially grayscale), which turns coloured and shows project name when hovered-->
+      <!-- these also all have an onclick function which is set in javascript (to toggle popup visible and hidden)-->
+
+      <button class="button Draggable" onclick="hideShow()">
+        <img src="images/film1.png">
+        <div class="caption">soft glow, slow burn</div>
+      </button>
+      
+      <button class="Draggable" onclick="hideShow2()">
+        <img src="images/film2.png">
+        <div class="caption">faint memoria</div>
+      </button>
+
+      <button class="Draggable" onclick="hideShow3()">
+        <img src="images/film3.png">
+        <div class="caption">imprint</div>
+      </button>
+
+      <button class="Draggable" onclick="hideShow4()">
+        <img src="images/film4.png">
+        <div class="caption">morning coffee</div>
+      </button>
+
+      <button class="Draggable" onclick="hideShow5()">
+        <img src="images/film5.png">
+        <div class="caption">detached</div>
+      </button>
+
+      <button class="Draggable" onclick="hideShow6()"> 
+        <img src="images/film7.png">
+        <div class="caption">snapshot</div>
+      </button>
+
+      <button class="Draggable" onclick="hideShow7()"> 
+        <img src="images/film8.png">
+        <div class="caption">still life</div>
+      </button>
+
+      <button class="Draggable" onclick="hideShow8()"> 
+        <img src="images/film9.png">
+        <div class="caption">oniftml</div>
+      </button>
+
+      <button class="Draggable" onclick="hideShow9()"> 
+        <img src="images/film10.png">
+        <div class="caption">where's cookie</div>
+      </button>
+    
+    </div>
+
+    </div>
+
+
+    <!-- this is the beginning of the popup divs (keep in mind these are set as hidden until button is pressed) -->
+    <!-- each popup has it's own project title, image or iframe video, project medium/ type, and the caption/ description-->
+    <!-- on the bottom of each popup is also another onclick function which simply closes the popup (turns it hidden again) when clicked-->
+
+    <!-- this is the popup for project 1-->
+
+    <div class="popup" id="popup">
+      <h3> soft glow, slow burn / 2022 </h3>
+      <h4>Hand-drawn animation with ProCreate</h4><br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/myOMjG7xt34?si=DKo5dHcnErqFHslK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <br>
+      
+      <br>
+      <h5>“Darkness is an indispensable element of beauty” 
+        “Were it not for shadows, there would be no beauty”
+        <br>
+        ‘soft glow, slow burn’ is a short hand-drawn animation inspired by quotes from Jun’ichirō Tanizaki’s ‘In Praise of Shadows’.
+        <br>
+        This film depicts several instances of light appearing in the nighttime, and how the soft illumination of different sources creates a beautiful atmosphere.
+        Instead of focusing on the negativities of darkness, I wanted to bring a new fresh perspective on the warmth and tenderness of the dark.  </h5>
+      <a href="#" onclick="hideShow()">close</a>
+    </div>
+
+    
+    <!-- this is the popup for project 2-->
+
+    <div class="popup2" id="popup2">
+      <h3> Faint Memoria / 2022 </h3>
+      <h4>Multimedia project.  </h4>
+      <br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/uTixiZsmBnU?si=hZQC1uDleKkupUdP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <br>
+      
+      <br>
+      <h5>A multimedia keepsake interactive book inspired by my short animation ‘soft glow, slow burn’.  <br><br>
+        This project aims to evoke the comfort and warmth of nostalgia - reminiscing moments through human touch.</h5>
+      <a href="#" onclick="hideShow2()">close</a>
+    </div>
+
+
+    <!-- this is the popup for project 3-->
+
+    <div class="popup3" id="popup3">
+      <h3> Imprint / 2021 </h3>
+      <h4>Mark making book project. </h4><br>
+      <img src="images/imprint.png">
+      <br>
+      
+      <br>
+      <h5>Experimentation project with gathered items around my neighborhood. Bookbinding by hand. <br>
+        Little design project to keep myself occupied during the lockdown period. Everything was done at home with limited supplies.</h5>
+      <a href="#" onclick="hideShow3()">close</a>
+    </div>
+
+
+    <!-- this is the popup for project 4-->
+
+    <div class="popup4" id="popup4">
+      <h3> Morning Coffee / 2023 </h3>
+      <h4> Interactive Microgame. </h4><br>
+      <img src="images/coffee.png">
+      <br>
+      
+      <br>
+      <h5>
+        A calm interactive which allows the player to make their own cup of coffee to start the day! <br>
+        In the morning my favourite way of making my coffee is with a pour over/ drip method using a filter as it is a slow process 
+        and allows me to think in the moment. The process itself takes a while (around 2 mins depending on the coffee beans grind size) 
+        as the water has to go through the filter, which produces a different taste to a much quicker espresso style coffee! <br>
+      </h5>
+      <a href="#" onclick="hideShow4()">close</a>
+    </div>
+
+
+    <!-- this is the popup for project 5-->
+
+    <div class="popup5" id="popup5">
+      <h3> Detached / 2023 </h3>
+      <h4>Hand-drawn animation created with ProCreate. </h4><br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/kirKkfU4JBM?si=GkE7SDRL3TnvDQGp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <br>
+      
+      <br>
+      <h5>Detachment of reality, us, our bodies and our surroundings. <br>
+        A short looping animation questioning what is real and what is not.<br>
+        Inspired by AI generated images and Die Antwood's AI Generated Music video, Age of Illusion. <br>
+        Accompanying music by Ichiko Aoba (Parfum d'étoiles).</h5>
+      <a href="#" onclick="hideShow5()">close</a>
+    </div>
+
+
+    <!-- this is the popup for project 6-->
+
+    <div class="popup6" id="popup6">
+      <h3> Snapshot / 2022</h3>
+      <h4>Vector graphics and HTML website coding. </h4><br>
+      <img src="images/snapshot.png">
+      <br>
+      
+      <br>
+      <h5>A series of vector illustrations Inspired by my own memories and photos. I aim to create snapshots of specific scenes with complementing 
+        background sounds that can take the audience back to reminisce each moment.
+        <br> <br>
+        Each photo plays a distinct sound when clicked on, and by pressing multiple icons consecutively, a blend of memories can be made!</h5>
+      <a href="#" onclick="hideShow6()">close</a>
+    </div>
+
+
+    <!-- this is the popup for project 7-->
+
+    <div class="popup7" id="popup7">
+      <h3> Still Life / 2021 </h3>
+      <h4>Arcylic experimentation project.</h4><br>
+      <img src="images/still.png">
+      <br>
+      
+      <br>
+      <h5> A series of still-life works based on documenting my personal life. <br>
+        This project aimed to develop my skills in real-time observation as well as practicing using the acrylic medium.</h5>
+      <a href="#" onclick="hideShow7()">close</a>
+    </div>
+
+    <!-- this is the popup for project 8-->
+
+    <div class="popup8" id="popup8">
+      <h3> ONIFTML! / 2023</h3>
+      <h4>Interactive Microgame. </h4><br>
+      <img src="images/oniftml.png">
+      <br>
+      
+      <br>
+      <h5>Inspired by the frantic rush of trying not to be late for school, 
+        I wanted to create a timed minigame which involves the player spreading something on a piece of bread to create a sandwich.
+        The player has to click the peanut butter jar with the mouse to “pick up” the brown colour, and the jam jar for the other colour. 
+        Then click and drag across the two bread slices!</h5>
+      <a href="#" onclick="hideShow8()">close</a>
+    </div>
+
+    <!-- this is the popup for project 9-->
+
+    <div class="popup9" id="popup9">
+      <h3> Where's Cookie? / 2023</h3>
+      <h4>Interactive Microgame. </h4><br>
+      <img src="images/cookie.png">
+      <br>
+      
+      <br>
+      <h5>When I was younger and living in Indonesia, I had a fond memory of finding different stray street cats
+        in my neighbourhood and giving them food. This game is about finding Cookie, my favourite stray cat, who is always hiding in different places. 
+      The player uses the mouse to hover over the screen and reveal the hidden areas and shine a light on Cookie (using sprite mask).</h5>
+      <a href="#" onclick="hideShow9()">close</a>
+    </div>
+
+    
+  </body>
+
+</html>

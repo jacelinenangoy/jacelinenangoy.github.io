@@ -1,0 +1,410 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --colour-one: rgb(0,0,0);
+    --colour-two: rgb(100,100,100);
+    --colour-three: rgb(180,180,180);
+    --colour-four: rgb(240,240,240);
+    --border-one: dashed 2px white;
+}
+
+/* padding for a little frame around website*/
+body {
+  height: 100%;
+  background-color: #F6F4F1;
+  background-size: 100% ;
+  padding: 20px;
+  background-image: linear-gradient(rgb(215, 222, 230), rgb(221, 209, 202));
+  
+}
+
+/* this is the container that holds all the page's content */
+.container{
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  padding: 20px;
+}
+
+/* this is the blur filter which toggles on when the button is pressed (to make the popup seem more in focus) */
+
+.container#blur.active{
+  filter: blur(18px);  /* didn't want the blur to be too low that the bg video becomes distracting, nor too high that the bg looks like a solid gradient */
+  pointer-events: none;
+  user-select: none;
+}
+
+.container .content{
+  position: relative;
+  max-width: 800px;
+}
+
+/* this ensures the background video is fullscreen and arranged on a lower z-index  */
+.container .vid{
+  width: 100%; 
+  height: 100vh;        /* vh to keep the same ratio*/
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;        /* to ensure that the video is below the layer of the buttons and other features (so that it is still visible)  */
+  display: block;
+}
+
+
+/* nav bar to be positioned on top of screen*/
+nav{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav ul li{
+  list-style: none;
+  display: inline-block;  /* ensures each list item is on one horizontal line rather than a vertical list */
+  margin-left: 40px;
+}
+nav ul li a{
+  text-decoration: none;
+  color: rgb(87, 79, 70);
+  font-size: medium;
+  font-family: 'Helvetica';
+  font-weight: 500;
+}
+nav ul li a:hover{
+  text-decoration: none;  
+  color: rgb(87, 79, 70);
+  font-size: medium;
+  font-family: 'Helvetica';
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* this is the refresh button (website name/ logo on top left) */
+nav button:hover{
+  scale: 1;
+  cursor: pointer;
+}
+
+
+
+/* below is the text stylisation according to visual hierarchy */
+/* each has a change in size, colour and font-weight etc for clear readability and visual structure, especially inside the popups */
+/* each text hover function has a cursor pointer and change of colour for visibility purposes*/
+
+h1{
+  font-size: x-large;
+  font-family: 'Helvetica';
+  font-weight: 800;
+  color: rgb(87, 79, 70);
+}
+
+h1:hover,
+nav ul li a:hover{
+  color: #837c71;
+  text-decoration: underline;   /* this helps user see which is being selected */
+  cursor: pointer;    /* helps user know its a clickable element */
+}
+
+h2{
+  font-size: medium;
+  font-family: 'Helvetica';
+  font-weight: 800;
+  color: rgb(226, 225, 222);
+}
+
+h2:hover{
+  color: #ffffff;
+  cursor: pointer;
+}
+
+h3{
+  font-size: x-large;
+  font-family: 'Helvetica';
+  font-weight: 800;
+  color: rgb(73, 67, 60);
+  text-align: center;
+}
+
+h4{
+  font-size: medium;
+  font-family: 'Helvetica';
+  font-weight: 500;
+  color: rgb(62, 55, 46);
+  line-height: 20px;
+  text-align: center;
+}
+
+h5{
+  font-size: medium;
+  font-family: 'Helvetica';
+  font-weight: 500;
+  color: rgb(62, 55, 46);
+  line-height: 20px;
+  text-align: left;
+}
+
+h6{
+  font-size: small;
+  font-family: 'Helvetica';
+  font-weight: 500;
+  color: rgb(62, 55, 46);
+  line-height: 20px;
+  text-align: left;
+}
+
+
+
+/* these "buttons" are the project images which are disguised as clickable buttons*/
+button{
+  border: none;
+  scale: 1;
+  background-color: rgba(0, 0, 0, 0);   /* transparent background for visual purposes */
+  filter: grayscale(100%);    /* this makes the image initially appear grayscale until hovered */
+}
+button:hover{
+  scale: 1.2;   /* image enlarges in size to indicate being selected */
+  cursor: pointer;    /* also helps with indicating selection */
+  filter: grayscale(0%);    /* image becomes full coloured when hovered */
+}
+
+/* this turns the project captions to be visible*/
+button .caption{
+  visibility: hidden;
+}
+button:hover .caption{
+  visibility: visible;
+}
+
+/* this is to set the button image size */
+img{
+  width: 18vh;
+}
+
+/* relative key to drag working */
+.Draggable{
+  position: relative;
+}
+/* turn off mouse events for anything inside of our draggable elements */
+.Draggable > *{
+  pointer-events: none;
+  user-select: none;
+}
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+
+
+/* these below are the popup sections/ they are all hidden until toggled visible) */
+
+
+/* each nav section has slightly different size popup to match the content*/
+
+.abt{
+  position: fixed;
+  top: 40%;
+  left: 70%;
+  transform: translate(-50%,-50%);
+  width: 200px;
+  height: 450px;
+  padding: 40px;
+  box-shadow: 0 5px 30px rgba(0,0,0,.30);
+  background: #efe9e9;
+  visibility: hidden;   /* hidden until toggle turns it active */
+  transition: 0.5;
+  z-index: 1;   /* arranged on top of all other elements */
+}
+
+.contact{
+  position: fixed;
+  top: 25%;
+  left: 80%;
+  transform: translate(-50%,-50%);
+  width: 300px;
+  height: 200px;
+  padding: 40px;
+  box-shadow: 0 5px 30px rgba(0,0,0,.30);
+  background: #efe9e9;
+  visibility: hidden;   /* hidden until toggle turns it active */
+  transition: 0.5;
+  z-index: 1;   /* arranged on top of all other elements */
+}
+
+.archive{
+  position: fixed;
+  top: 40%;
+  left: 75%;
+  transform: translate(-50%,-50%);
+  width: 600px;
+  height: 450px;
+  padding: 40px;
+  box-shadow: 0 5px 30px rgba(0,0,0,.30);
+  background: #efe9e9;
+  visibility: hidden;   /* hidden until toggle turns it active */
+  transition: 0.5;
+  z-index: 1;   /* arranged on top of all other elements */
+}
+
+.projects{
+  position: fixed;
+  top: 30%;
+  left: 76%;
+  transform: translate(-50%,-50%);
+  width: 240px;
+  height: 300px;
+  padding: 40px;
+  box-shadow: 0 5px 30px rgba(0,0,0,.30);
+  background: #efe9e9;
+  visibility: hidden;   /* hidden until toggle turns it active */
+  transition: 0.5;
+  z-index: 1;   /* arranged on top of all other elements */
+}
+
+/* this ensures all nav popups becomes visible and is arranged on top*/
+.abt.active,
+.projects.active,
+.archive.active,
+.contact.active{
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5;
+  z-index: 1;
+  display: block;
+  text-align: center;
+}
+
+/* nav image sizing */
+.abt img{
+  width: 110px;
+}
+.archive img{
+  width: 500px;
+}
+
+
+
+/* these are the popups for the projects*/
+
+/* the popup is initially hidden, until the button is pressed */
+.popup,
+.popup2,
+.popup3,
+.popup4,
+.popup5,
+.popup6,
+.popup7,
+.popup8,
+.popup9{
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 1000px;
+  height: 700px;
+  padding: 50px;
+  box-shadow: 0 5px 30px rgba(0,0,0,.30);
+  background: #efe9e9d1;
+  border-color: #3f2f2fc8;
+  border-width: 20px;
+  visibility: hidden;   /* hidden until toggle turns it active */
+  transition: 0.5;
+  z-index: 1;   /* arranged on top of all other elements */
+}
+
+/* this turns the popup to be visible and arranged on top */
+.popup.active,
+.popup2.active,
+.popup3.active,
+.popup4.active,
+.popup5.active,
+.popup6.active,
+.popup7.active,
+.popup8.active,
+.popup9.active{
+  top: 50%;       /* this ensures the popup is positioned centre of the screen */
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5;
+  z-index: 1;
+}
+
+/* this ensures all images and videos in the popups are the same ratio  */
+.popup img,
+.popup2 img,
+.popup3 img,
+.popup4 img,
+.popup5 img,
+.popup6 img,
+.popup7 img,
+.popup8 img,
+.popup9 img{
+  height: 315px;
+  width: auto;
+  text-align: center;
+  margin: auto;
+  display: block;
+}
+iframe{
+  display: block;
+  margin: auto;
+}
+
+/* this is to stylise the popup "close" button */
+.popup a,
+.popup2 a,
+.popup3 a,
+.popup4 a,
+.popup5 a,
+.popup6 a,
+.popup7 a,
+.popup8 a,
+.popup9 a{
+  position: relative;
+  padding: 5px 20px;
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;    /* to get rid of default underline */
+  background: #11111138;     /* this creates a clickable looking box for the "button", rather than floating text that people might not know is clickable */
+  cursor: pointer;    /* this also allows users to know it is clickable */
+  font-size: large;
+  font-family: 'Helvetica';
+  font-weight: 500;
+  color: rgb(226, 225, 222);
+  border-radius: 5px;   /* rounded corners */
+  left: 90%;
+  top: 10%;
+}
+
+/* this enhances hover visual feedback for "close" button */
+.popup a:hover,
+.popup2 a:hover,
+.popup3 a:hover,
+.popup4 a:hover,
+.popup5 a:hover,
+.popup6 a:hover,
+.popup7 a:hover,
+.popup8 a:hover,
+.popup9 a:hover{
+  color: rgb(135, 125, 110);
+  background: rgb(244, 244, 243);
+}
+
+
